@@ -1,230 +1,185 @@
-/* ═══════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════
    PORTFOLIO SCRIPT — Senthil Thanneermalai
-═══════════════════════════════════════════════ */
+═══════════════════════════════════════════════════════ */
 
-/* ─── CURSOR GLOW ─── */
-const glow = document.getElementById('cursorGlow');
-if (glow && window.innerWidth > 480) {
+/* ─── CUSTOM CURSOR ─── */
+const dot  = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+
+if (dot && ring && window.matchMedia('(pointer: fine)').matches) {
+  let ringX = 0, ringY = 0;
+  let curX = 0, curY = 0;
+
   document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top  = e.clientY + 'px';
+    curX = e.clientX;
+    curY = e.clientY;
+    dot.style.left = curX + 'px';
+    dot.style.top  = curY + 'px';
+  });
+
+  // Ring follows with lag
+  (function animateRing() {
+    ringX += (curX - ringX) * 0.14;
+    ringY += (curY - ringY) * 0.14;
+    ring.style.left = ringX + 'px';
+    ring.style.top  = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  })();
+
+  // Hover state
+  const hoverEls = document.querySelectorAll('a, button, .btn, .proj-card, .exp-card, .stat-box, .social-btn');
+  hoverEls.forEach(el => {
+    el.addEventListener('mouseenter', () => { dot.classList.add('hovered'); ring.classList.add('hovered'); });
+    el.addEventListener('mouseleave', () => { dot.classList.remove('hovered'); ring.classList.remove('hovered'); });
   });
 }
 
-/* ─── NAV SCROLL EFFECT ─── */
+/* ─── NAV SCROLL ─── */
 const nav = document.getElementById('nav');
+const navLinks = document.getElementById('navLinks');
+const burger = document.getElementById('burger');
+
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
+  nav.classList.toggle('scrolled', window.scrollY > 30);
 }, { passive: true });
 
-/* ─── MOBILE NAV TOGGLE ─── */
-const navToggle = document.getElementById('navToggle');
-const navLinks  = document.querySelector('.nav-links');
-navToggle.addEventListener('click', () => {
+burger.addEventListener('click', () => {
   navLinks.classList.toggle('open');
-  navToggle.classList.toggle('active');
 });
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    navToggle.classList.remove('active');
+// Close menu on link click
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+/* ─── ACTIVE NAV LINK ─── */
+const sections   = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-link');
+
+new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      navAnchors.forEach(a => {
+        const matches = a.getAttribute('href') === `#${id}`;
+        a.classList.toggle('active', matches);
+      });
+    }
   });
-});
-
-/* ─── TYPEWRITER EFFECT ─── */
-const phrases = [
-  'scalable web apps.',
-  'AI/ML systems.',
-  'cloud infrastructure.',
-  'real-time pipelines.',
-  'things that matter.',
-];
-let phraseIdx = 0, charIdx = 0, deleting = false;
-const typeEl = document.getElementById('typewriter');
-
-function typeLoop() {
-  const phrase = phrases[phraseIdx];
-  if (!deleting) {
-    typeEl.textContent = phrase.slice(0, ++charIdx);
-    if (charIdx === phrase.length) {
-      deleting = true;
-      return setTimeout(typeLoop, 1800);
-    }
-  } else {
-    typeEl.textContent = phrase.slice(0, --charIdx);
-    if (charIdx === 0) {
-      deleting = false;
-      phraseIdx = (phraseIdx + 1) % phrases.length;
-      return setTimeout(typeLoop, 400);
-    }
-  }
-  setTimeout(typeLoop, deleting ? 40 : 70);
-}
-setTimeout(typeLoop, 1200);
-
-/* ─── HERO CANVAS — PARTICLE NETWORK ─── */
-(function initCanvas() {
-  const canvas  = document.getElementById('heroCanvas');
-  const ctx     = canvas.getContext('2d');
-  let particles = [];
-  const PARTICLE_COUNT = 70;
-  const CONNECTION_DIST = 160;
-
-  function resize() {
-    canvas.width  = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  class Particle {
-    constructor() { this.reset(); }
-    reset() {
-      this.x  = Math.random() * canvas.width;
-      this.y  = Math.random() * canvas.height;
-      this.vx = (Math.random() - 0.5) * 0.4;
-      this.vy = (Math.random() - 0.5) * 0.4;
-      this.r  = Math.random() * 2 + 1;
-      this.alpha = Math.random() * 0.5 + 0.2;
-    }
-    update() {
-      this.x += this.vx;
-      this.y += this.vy;
-      if (this.x < 0 || this.x > canvas.width)  this.vx *= -1;
-      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(124,58,237,${this.alpha})`;
-      ctx.fill();
-    }
-  }
-
-  for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
-
-  function drawConnections() {
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < CONNECTION_DIST) {
-          const alpha = (1 - dist / CONNECTION_DIST) * 0.3;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(124,58,237,${alpha})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => { p.update(); p.draw(); });
-    drawConnections();
-    requestAnimationFrame(animate);
-  }
-  animate();
-})();
+}, { threshold: 0.45 }).observe
+  ? sections.forEach(s =>
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            navAnchors.forEach(a =>
+              a.classList.toggle('active', a.getAttribute('href') === `#${e.target.id}`)
+            );
+          }
+        });
+      }, { threshold: 0.45 }).observe(s)
+    )
+  : null;
 
 /* ─── SCROLL REVEAL ─── */
-const revealEls = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
-
-const observer = new IntersectionObserver((entries) => {
+const revealEls = document.querySelectorAll('.reveal, .reveal-right');
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      // Stagger siblings within the same parent
-      const siblings = entry.target.parentElement.querySelectorAll(
-        '.reveal-up, .reveal-left, .reveal-right'
-      );
-      siblings.forEach((el, i) => {
-        if (!el.classList.contains('revealed')) {
-          el.style.transitionDelay = (i * 0.08) + 's';
-        }
-      });
-      entry.target.classList.add('revealed');
+      // Stagger children in the same group
+      const parent = entry.target.closest('.stats-row, .skills-layout, .exp-list, .projects-grid, .edu-cards, .hero-left, .about-layout');
+      if (parent) {
+        const siblings = [...parent.querySelectorAll('.reveal, .reveal-right')];
+        const idx = siblings.indexOf(entry.target);
+        entry.target.style.transitionDelay = (idx * 0.06) + 's';
+      }
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
 
-revealEls.forEach(el => observer.observe(el));
+revealEls.forEach(el => revealObserver.observe(el));
 
-/* ─── HERO INITIAL ANIMATIONS ─── */
-document.querySelectorAll('.hero .reveal-up').forEach((el, i) => {
-  el.style.transitionDelay = (i * 0.12 + 0.3) + 's';
-  setTimeout(() => el.classList.add('revealed'), 50);
+/* ─── HERO IMMEDIATE REVEALS ─── */
+document.querySelectorAll('.hero .reveal, .hero .reveal-right').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.1 + 0.15) + 's';
+  setTimeout(() => el.classList.add('visible'), 50);
 });
 
-/* ─── SMOOTH ACTIVE NAV LINK ─── */
-const sections = document.querySelectorAll('section[id]');
-const navAnchors = document.querySelectorAll('.nav-links a');
-
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.getAttribute('id');
-      navAnchors.forEach(a => {
-        a.style.color = a.getAttribute('href') === `#${id}` ? 'var(--text)' : '';
-      });
-    }
+/* ─── TERMINAL TYPING ANIMATION ─── */
+(function initTerminal() {
+  const lines = document.querySelectorAll('.t-block .t-json, .t-output div');
+  lines.forEach((line, i) => {
+    line.style.opacity = '0';
+    line.style.transform = 'translateX(-6px)';
+    line.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    setTimeout(() => {
+      line.style.opacity = '1';
+      line.style.transform = 'translateX(0)';
+    }, 600 + i * 110);
   });
-}, { threshold: 0.4 });
+})();
 
-sections.forEach(s => sectionObserver.observe(s));
-
-/* ─── STAT COUNTER ANIMATION ─── */
-function animateCounter(el, target, suffix = '') {
-  const isDecimal = target.toString().includes('.');
-  const numTarget = parseFloat(target);
-  let current = 0;
-  const step  = numTarget / 60;
-  const tick  = () => {
-    current = Math.min(current + step, numTarget);
-    el.textContent = (isDecimal ? current.toFixed(2) : Math.floor(current)) + suffix;
-    if (current < numTarget) requestAnimationFrame(tick);
+/* ─── STAT COUNTER ─── */
+function runCounter(el) {
+  if (el._done) return;
+  el._done = true;
+  const raw = el.getAttribute('data-count');
+  if (!raw) return;
+  const target  = parseFloat(raw);
+  const suffix  = el.getAttribute('data-suffix') || '';
+  const decimal = raw.includes('.');
+  let cur = 0;
+  const step = target / 55;
+  const tick = () => {
+    cur = Math.min(cur + step, target);
+    el.textContent = (decimal ? cur.toFixed(2) : Math.floor(cur)) + suffix;
+    if (cur < target) requestAnimationFrame(tick);
   };
   tick();
 }
 
-const statsObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const card = entry.target;
-      const numEl = card.querySelector('.stat-number');
-      if (!numEl || card._counted) return;
-      card._counted = true;
-      const text = numEl.textContent.trim();
-      if (text === '3.96') animateCounter(numEl, 3.96);
-      else if (text === '4+') animateCounter(numEl, 4, '+');
-      else if (text === '3') animateCounter(numEl, 3);
-      else if (text === '1M+') { numEl.textContent = '0'; animateCounter(numEl, 1, 'M+'); }
+new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const numEl = e.target.querySelector('.stat-box-num[data-count]');
+      if (numEl) runCounter(numEl);
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.6 }).observe
+  ? document.querySelectorAll('.stat-box').forEach(box =>
+      new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { const n = e.target.querySelector('.stat-box-num[data-count]'); if(n) runCounter(n); } });
+      }, { threshold: 0.6 }).observe(box)
+    )
+  : null;
 
-document.querySelectorAll('.stat-card').forEach(c => statsObserver.observe(c));
+/* ─── SMOOTH HOVER FOR EXP CARDS (left border accent) ─── */
+document.querySelectorAll('.exp-card').forEach(card => {
+  const color = card.getAttribute('data-color') || '#1D4ED8';
+  card.addEventListener('mouseenter', () => {
+    card.style.borderColor = color + '55';
+    card.style.boxShadow   = `0 8px 32px ${color}1A`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.borderColor = '';
+    card.style.boxShadow   = '';
+  });
+});
 
-/* ─── TILT EFFECT ON PROJECT CARDS ─── */
-if (window.innerWidth > 768) {
-  document.querySelectorAll('.project-card').forEach(card => {
+/* ─── TILT ON PROJECT CARDS ─── */
+if (window.matchMedia('(pointer: fine)').matches) {
+  document.querySelectorAll('.proj-card, .project-featured').forEach(card => {
     card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width  - 0.5;
-      const y = (e.clientY - rect.top)  / rect.height - 0.5;
-      card.style.transform = `translateY(-8px) rotateY(${x * 6}deg) rotateX(${-y * 4}deg)`;
+      const r = card.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width  - 0.5) * 5;
+      const y = ((e.clientY - r.top)  / r.height - 0.5) * -3;
+      card.style.transform = `translateY(-4px) rotateY(${x}deg) rotateX(${y}deg)`;
+      card.style.transition = 'box-shadow 0.25s, border-color 0.25s';
     });
     card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
+      card.style.transform  = '';
+      card.style.transition = 'all 0.4s cubic-bezier(0.22,1,0.36,1)';
     });
   });
 }
 
-console.log(
-  '%c Senthil Thanneermalai ',
-  'background:linear-gradient(135deg,#7c3aed,#06b6d4);color:#fff;font-size:20px;font-weight:800;padding:8px 16px;border-radius:8px;'
-);
-console.log('%c tsenthil5@gmail.com', 'color:#a855f7;font-size:13px;');
+console.log('%c 👨‍💻 Senthil Thanneermalai ', 'background:#1D4ED8;color:#fff;font-size:18px;font-weight:800;padding:8px 16px;border-radius:8px;');
+console.log('%c tsenthil5@gmail.com | github.com/tsenthil5', 'color:#2563EB;font-size:12px;');
