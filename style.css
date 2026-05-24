@@ -852,6 +852,15 @@ strong { font-weight: 600; }
 }
 .feat-icon { font-size: 0.9rem; }
 
+.proj-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
 .proj-gh-link {
   display: inline-flex;
   align-items: center;
@@ -859,12 +868,29 @@ strong { font-weight: 600; }
   font-size: 0.84rem;
   font-weight: 600;
   color: var(--muted);
-  margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
   transition: color 0.2s;
 }
 .proj-gh-link:hover { color: var(--blue); }
+.proj-ieee-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #00629B;
+  background: #E8F4FB;
+  border: 1px solid #B3D9F0;
+  border-radius: 100px;
+  padding: 3px 10px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.proj-ieee-link:hover {
+  background: #00629B;
+  color: #fff;
+  border-color: #00629B;
+}
+.proj-cat-amber { background: #FFFBEB; color: #92400E; }
 
 /* ═══════════════════════════════════════════════════════════
    SKILLS
