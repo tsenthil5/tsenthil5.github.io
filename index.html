@@ -23,6 +23,7 @@
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#publications" class="nav-link">Publications</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#contact" class="nav-link nav-cta">Let's Talk</a></li>
       </ul>
@@ -304,156 +305,205 @@
   <section class="section" id="projects">
     <div class="container">
       <div class="section-eyebrow reveal">Projects</div>
-      <h2 class="section-h2 reveal">Research & <span class="text-blue">Engineering Work</span></h2>
+      <h2 class="section-h2 reveal">Engineering <span class="text-blue">Work</span></h2>
 
-      <!-- Project 1 — FAISS (featured) -->
-      <div class="project-featured reveal">
-        <div class="project-featured-content">
-          <div class="project-featured-meta">
-            <span class="proj-category proj-cat-blue">AI · Information Retrieval</span>
-            <span class="proj-date">Jan – May 2024</span>
+      <div class="proj-list">
+
+        <!-- 01 — FAISS -->
+        <div class="proj-row reveal">
+          <div class="proj-row-left">
+            <div class="proj-num">01</div>
+            <div class="proj-accent" style="background:#1D4ED8"></div>
           </div>
-          <h3 class="project-title">Rapid Multimodal Query Resolution<br />Using Nearest Neighbor Search</h3>
-          <p class="project-desc">Advanced visual content search system supporting <strong>image, text, and audio queries</strong> with sub-second response times. Evaluated FAISS, ANNOY, and USearch across 1 million images from the SBU Captions dataset using a pre-trained SigLIP model for feature extraction.</p>
-          <div class="project-highlights-grid">
-            <div class="phigh"><strong>70%</strong> reduction in search latency vs brute-force</div>
-            <div class="phigh"><strong>25%</strong> search accuracy improvement</div>
-            <div class="phigh"><strong>5 languages</strong> supported (+30% accessibility)</div>
-            <div class="phigh"><strong>1M</strong> indexed image vectors</div>
+          <div class="proj-row-body">
+            <div class="proj-row-header">
+              <div class="proj-row-meta">
+                <span class="proj-category proj-cat-blue">AI · Information Retrieval</span>
+                <span class="proj-date">Jan – May 2024</span>
+              </div>
+              <a href="https://github.com/tsenthil5/COMP-646-Faiss-Project" target="_blank" class="proj-gh-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+            <h3 class="proj-row-title">Rapid Multimodal Query Resolution Using Nearest Neighbor Search</h3>
+            <p class="proj-row-desc">Built a visual content search system that understands <strong>image, text, and audio queries</strong> simultaneously — delivering sub-second results across 1 million images. Evaluated FAISS, ANNOY, and USearch with a SigLIP model for feature extraction on the SBU Captions dataset.</p>
+            <div class="proj-metrics">
+              <span class="metric-pill"><strong>70%</strong> latency reduction</span>
+              <span class="metric-pill"><strong>25%</strong> accuracy gain</span>
+              <span class="metric-pill"><strong>1M</strong> images indexed</span>
+              <span class="metric-pill"><strong>5</strong> languages supported</span>
+            </div>
+            <div class="proj-row-bottom">
+              <div class="tag-row">
+                <span class="tag">FAISS</span><span class="tag">ANNOY</span><span class="tag">USearch</span><span class="tag">SigLIP</span><span class="tag">Docker</span><span class="tag">Flask</span><span class="tag">React.js</span>
+              </div>
+            </div>
           </div>
-          <div class="tag-row">
-            <span class="tag tag-blue">FAISS</span><span class="tag tag-blue">SigLIP</span><span class="tag tag-blue">Python</span><span class="tag tag-blue">Docker</span><span class="tag tag-blue">Flask</span><span class="tag tag-blue">React.js</span>
+          <div class="proj-row-visual">
+            <div class="proj-chart-frame">
+              <div class="proj-chart-label">
+                <span class="proj-chart-dot"></span>Latency Benchmark — 1M Vectors
+              </div>
+              <img src="faiss-latency-14.png" alt="FAISS latency chart" />
+            </div>
           </div>
-          <a href="https://github.com/tsenthil5/COMP-646-Faiss-Project" target="_blank" class="proj-btn">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            View on GitHub
+        </div>
+
+        <!-- 02 — Medical Report -->
+        <div class="proj-row reveal">
+          <div class="proj-row-left">
+            <div class="proj-num">02</div>
+            <div class="proj-accent" style="background:#7C3AED"></div>
+          </div>
+          <div class="proj-row-body">
+            <div class="proj-row-header">
+              <div class="proj-row-meta">
+                <span class="proj-category proj-cat-violet">Deep Learning · Healthcare</span>
+                <span class="proj-date">Aug – Dec 2023</span>
+              </div>
+              <a href="https://github.com/tsenthil5/COMP576-Final-Project" target="_blank" class="proj-gh-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+            <h3 class="proj-row-title">Automatic Medical Report Generation from Chest X-Ray Images</h3>
+            <p class="proj-row-desc">Led a team of 5 to design a neural network combining a <strong>co-attention mechanism</strong> with CheXNet image features, GloVe word embeddings, and BioBERT for clinical language generation — automating radiology reports from raw X-ray images.</p>
+            <div class="proj-metrics">
+              <span class="metric-pill"><strong>30%</strong> accuracy improvement</span>
+              <span class="metric-pill"><strong>Team of 5</strong> researchers</span>
+              <span class="metric-pill">Co-attention mechanism</span>
+            </div>
+            <div class="proj-row-bottom">
+              <div class="tag-row">
+                <span class="tag">PyTorch</span><span class="tag">CheXNet</span><span class="tag">BioBERT</span><span class="tag">GloVe</span><span class="tag">Python</span><span class="tag">Flask</span>
+              </div>
+            </div>
+          </div>
+          <div class="proj-row-visual">
+            <div class="proj-chart-frame">
+              <div class="proj-chart-label">
+                <span class="proj-chart-dot" style="background:#7C3AED"></span>Research Poster
+              </div>
+              <img src="poster-xray.png" alt="Medical report generation research poster" style="object-position:top" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 — Attention Span -->
+        <div class="proj-row reveal">
+          <div class="proj-row-left">
+            <div class="proj-num">03</div>
+            <div class="proj-accent" style="background:#059669"></div>
+          </div>
+          <div class="proj-row-body proj-row-body--full">
+            <div class="proj-row-header">
+              <div class="proj-row-meta">
+                <span class="proj-category proj-cat-green">Real-Time AI · EdTech</span>
+                <span class="proj-date">Aug 2020 – Jul 2021</span>
+              </div>
+              <a href="https://github.com/tsenthil5/Attention-Span-Detection-Online-Lecture" target="_blank" class="proj-gh-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+            <h3 class="proj-row-title">Attention Span Detection of Online Lectures</h3>
+            <p class="proj-row-desc">Real-time system that monitors and scores student attention in online instructor-led sessions using computer vision and audio processing. Leverages Kafka for streaming visual cues and delivers a live participation dashboard with real-time alerts. Published as an IEEE paper — <strong>selected in the top 10 of 100+ submissions</strong> at ICACC.</p>
+            <div class="proj-metrics">
+              <span class="metric-pill"><strong>85%</strong> attention accuracy</span>
+              <span class="metric-pill">Top 10 / 100+ papers</span>
+              <span class="metric-pill">IEEE Published</span>
+              <span class="metric-pill">Kafka real-time pipeline</span>
+            </div>
+            <div class="proj-row-bottom">
+              <div class="tag-row">
+                <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">Kafka</span><span class="tag">Flask</span><span class="tag">React.js</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 — DigiSaatBaara -->
+        <div class="proj-row reveal">
+          <div class="proj-row-left">
+            <div class="proj-num">04</div>
+            <div class="proj-accent" style="background:#D97706"></div>
+          </div>
+          <div class="proj-row-body proj-row-body--full">
+            <div class="proj-row-header">
+              <div class="proj-row-meta">
+                <span class="proj-category proj-cat-amber">AgriTech · Civic Tech</span>
+                <span class="proj-date">2020</span>
+              </div>
+              <a href="https://github.com/tsenthil5/DigiSaatBaara" target="_blank" class="proj-gh-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+            <h3 class="proj-row-title">DigiSaatBaara — Geo-fencing &amp; Crop Prediction for Farmers</h3>
+            <p class="proj-row-desc">Full-stack AgriTech platform that digitizes Indian government land documents (Saat Bara &amp; Soil Health Cards) and applies <strong>ML-based crop prediction</strong>. Farmers use a Google Maps–powered Android app to geo-fence their land, and a Flask web dashboard displays crop recommendations, cost analysis, and land history.</p>
+            <div class="proj-metrics">
+              <span class="metric-pill">Google Maps geo-fencing</span>
+              <span class="metric-pill">ML crop prediction</span>
+              <span class="metric-pill">Android + Web</span>
+              <span class="metric-pill">Govt. doc parsing</span>
+            </div>
+            <div class="proj-row-bottom">
+              <div class="tag-row">
+                <span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Android</span><span class="tag">Google Maps SDK</span><span class="tag">ML</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PUBLICATIONS ─── -->
+  <section class="section section-tint" id="publications">
+    <div class="container">
+      <div class="section-eyebrow reveal">Publications</div>
+      <h2 class="section-h2 reveal">Peer-Reviewed <span class="text-blue">Research</span></h2>
+
+      <div class="pub-list">
+
+        <div class="pub-card reveal">
+          <div class="pub-card-left">
+            <div class="pub-ieee-badge">IEEE</div>
+            <div class="pub-year">2021</div>
+          </div>
+          <div class="pub-card-body">
+            <div class="pub-title">Attention Span Detection for Online Lectures</div>
+            <div class="pub-venue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+              IEEE International Conference on Advances in Computing and Communication (ICACC)
+            </div>
+            <div class="pub-authors">V. Karthikraj, V. Patil, S. Thanneermalai, et al. &nbsp;·&nbsp; <strong>Top 10 of 100+ submissions</strong></div>
+          </div>
+          <a href="https://ieeexplore.ieee.org/abstract/document/9299647" target="_blank" class="pub-link-btn">
+            Read Paper
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </div>
-        <div class="project-featured-visual">
-          <div class="chart-card">
-            <div class="chart-card-header">
-              <span class="chart-dot blue"></span>
-              <span>FAISS Index Latency Comparison</span>
-            </div>
-            <img src="faiss-latency-14.png" alt="FAISS Latency Performance Chart" class="chart-img" />
-            <div class="chart-caption">IndexFlatL2 vs IndexIVFFlat on 1M vectors</div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Projects Grid -->
-      <div class="projects-grid">
-
-        <!-- Project 2 — Medical Report -->
-        <div class="proj-card reveal">
-          <div class="proj-card-top" style="background: linear-gradient(135deg,#7C3AED,#A855F7)">
-            <span class="proj-icon">🩺</span>
+        <div class="pub-card reveal" style="--d:0.1s">
+          <div class="pub-card-left">
+            <div class="pub-ieee-badge">IEEE</div>
+            <div class="pub-year">2021</div>
           </div>
-          <div class="proj-card-body">
-            <div class="proj-category proj-cat-violet">Deep Learning · Healthcare</div>
-            <h3 class="proj-card-title">Automatic Medical Report Generation from Chest X-Rays</h3>
-            <p class="proj-card-desc">Led a team of 5 to develop a neural network with a co-attention mechanism integrating CheXNet, GloVe, and BioBERT — achieving a <strong>30% accuracy improvement</strong> in clinical report generation.</p>
-            <div class="proj-card-img-wrap">
-              <img src="poster-xray.png" alt="Medical Report Generation Project Poster" class="proj-poster" />
+          <div class="pub-card-body">
+            <div class="pub-title">Geofencing and Efficient Crop Prediction Using Government Documents</div>
+            <div class="pub-venue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+              IEEE International Conference on Advances in Computing and Communication (ICACC)
             </div>
-            <div class="tag-row">
-              <span class="tag">PyTorch</span><span class="tag">CheXNet</span><span class="tag">BioBERT</span><span class="tag">GloVe</span><span class="tag">Flask</span>
-            </div>
-            <a href="https://github.com/tsenthil5/COMP576-Final-Project" target="_blank" class="proj-gh-link">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              View Repository
-            </a>
+            <div class="pub-authors">V. Karthikraj, V. Patil, S. Thanneermalai, et al.</div>
           </div>
-        </div>
-
-        <!-- Project 3 — Attention Span -->
-        <div class="proj-card reveal" style="--d:0.12s">
-          <div class="proj-card-top" style="background: linear-gradient(135deg,#059669,#10B981)">
-            <span class="proj-icon">📊</span>
-          </div>
-          <div class="proj-card-body">
-            <div class="proj-category proj-cat-green">Real-Time AI · EdTech</div>
-            <h3 class="proj-card-title">Attention Span Detection in Online Lectures</h3>
-            <p class="proj-card-desc">Real-time student attention monitoring system using computer vision and audio analytics. Achieved <strong>85% attention-scoring accuracy</strong> via Kafka-powered visual cue processing.</p>
-            <div class="achievement-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-              IEEE Published · Top 10 of 100+ papers · ICACC 2021
-            </div>
-            <div class="proj-features">
-              <div class="feat">
-                <span class="feat-icon">🎯</span>
-                <span>85% scoring accuracy</span>
-              </div>
-              <div class="feat">
-                <span class="feat-icon">⚡</span>
-                <span>Kafka real-time processing</span>
-              </div>
-              <div class="feat">
-                <span class="feat-icon">📈</span>
-                <span>Live participation dashboard</span>
-              </div>
-              <div class="feat">
-                <span class="feat-icon">🔔</span>
-                <span>Real-time trigger alerts</span>
-              </div>
-            </div>
-            <div class="tag-row">
-              <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">Kafka</span><span class="tag">Flask</span><span class="tag">React.js</span>
-            </div>
-            <div class="proj-footer-links">
-              <a href="https://github.com/tsenthil5/Attention-Span-Detection-Online-Lecture" target="_blank" class="proj-gh-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub
-              </a>
-              <a href="https://ieeexplore.ieee.org/abstract/document/9299647" target="_blank" class="proj-ieee-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                IEEE Paper I
-              </a>
-              <a href="https://ieeexplore.ieee.org/abstract/document/9708082" target="_blank" class="proj-ieee-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                IEEE Paper II
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 4 — DigiSaatBaara -->
-        <div class="proj-card reveal" style="--d:0.18s">
-          <div class="proj-card-top" style="background: linear-gradient(135deg,#D97706,#F59E0B)">
-            <span class="proj-icon">🌾</span>
-          </div>
-          <div class="proj-card-body">
-            <div class="proj-category proj-cat-amber">AgriTech · Civic Tech</div>
-            <h3 class="proj-card-title">DigiSaatBaara — Geo-fencing &amp; Crop Prediction for Farmers</h3>
-            <p class="proj-card-desc">Full-stack platform that parses Indian government land documents (Saat Bara &amp; Soil Health Cards) to enable <strong>geo-fenced digital land ownership</strong> and <strong>ML-based crop recommendations</strong> for farmers.</p>
-            <div class="proj-features">
-              <div class="feat">
-                <span class="feat-icon">🗺️</span>
-                <span>Google SDK geo-fencing</span>
-              </div>
-              <div class="feat">
-                <span class="feat-icon">🤖</span>
-                <span>ML crop prediction</span>
-              </div>
-              <div class="feat">
-                <span class="feat-icon">📱</span>
-                <span>Android + Web app</span>
-              </div>
-              <div class="feat">
-                <span class="feat-icon">📄</span>
-                <span>Govt. document parsing</span>
-              </div>
-            </div>
-            <div class="tag-row">
-              <span class="tag">JavaScript</span><span class="tag">Flask</span><span class="tag">Python</span><span class="tag">Android</span><span class="tag">Google Maps SDK</span><span class="tag">ML</span>
-            </div>
-            <div class="proj-footer-links">
-              <a href="https://github.com/tsenthil5/DigiSaatBaara" target="_blank" class="proj-gh-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub
-              </a>
-            </div>
-          </div>
+          <a href="https://ieeexplore.ieee.org/abstract/document/9708082" target="_blank" class="pub-link-btn">
+            Read Paper
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
         </div>
 
       </div>
