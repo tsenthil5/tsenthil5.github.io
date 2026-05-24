@@ -2,38 +2,6 @@
    PORTFOLIO SCRIPT — Senthil Thanneermalai
 ═══════════════════════════════════════════════════════ */
 
-/* ─── CUSTOM CURSOR ─── */
-const dot  = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
-
-if (dot && ring && window.matchMedia('(pointer: fine)').matches) {
-  let ringX = 0, ringY = 0;
-  let curX = 0, curY = 0;
-
-  document.addEventListener('mousemove', e => {
-    curX = e.clientX;
-    curY = e.clientY;
-    dot.style.left = curX + 'px';
-    dot.style.top  = curY + 'px';
-  });
-
-  // Ring follows with lag
-  (function animateRing() {
-    ringX += (curX - ringX) * 0.14;
-    ringY += (curY - ringY) * 0.14;
-    ring.style.left = ringX + 'px';
-    ring.style.top  = ringY + 'px';
-    requestAnimationFrame(animateRing);
-  })();
-
-  // Hover state
-  const hoverEls = document.querySelectorAll('a, button, .btn, .proj-card, .exp-card, .stat-box, .social-btn');
-  hoverEls.forEach(el => {
-    el.addEventListener('mouseenter', () => { dot.classList.add('hovered'); ring.classList.add('hovered'); });
-    el.addEventListener('mouseleave', () => { dot.classList.remove('hovered'); ring.classList.remove('hovered'); });
-  });
-}
-
 /* ─── NAV SCROLL ─── */
 const nav = document.getElementById('nav');
 const navLinks = document.getElementById('navLinks');
